@@ -1,0 +1,155 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Always all the informatin about the font must be put on the body because the body applies the inheritance property to the rest of the file, which makes all the text to have the same font */
+
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 400;
+    font-size: 16px;
+    line-height: 1.7; /* This make the line height being 1.7 times bigger than default */
+    color: #777;
+    padding: 30px;  /* padding is no inherited, therefore, the elements in the body won't get that padding by default */
+}
+
+.header {
+    height: 95vh;
+    /* You can specify two backgrounds */
+    background-image: linear-gradient(to right bottom,
+    #7ed56fbf, 
+    #28b485be), 
+    url("../img/hero.jpg");
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    /* how I need to locate an element in this area using position properties I need to add position: relative property to parent element */
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+    /* If you define Height it's not necessary to specify width because the browser manage this process by itself*/
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* The element without translate starts at the 50%, but with translate I move the element 50% in its own position, therefore, the middle of the element (50%) will be in the 50% of parent element */
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+
+    backface-visibility: hidden;
+    /* Backface property helps to avoid that animations shake */
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    
+
+
+    /* animation-delay: 3s; 
+    animation-iteration-count: 3; */
+}
+/* Best technique to separate two text is to add the property display block, which will make the element occupy the whole space in the line */
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    /* if I use inline-block property I will get the advantage of editing padding and marging although the element will continue being a inline element, aditinally, the element won't occupy the whole space but only the size (padding or marging)*/
+    border-radius: 100px;
+    transition: all .2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgb(0, 0, 0, .2);
+
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
